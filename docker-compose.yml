@@ -2,9 +2,6 @@ version: "3.9"
 services:
   front-app:
     build: .
-    # volumes:
-    #   - ./frontVolume:/usr/src/app
     ports:
       - "80:80"
-    # stdin_open: true
     tty: true

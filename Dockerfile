@@ -1,8 +1,4 @@
 ARG APP_HOME=/home/node/app
-#FROM node:16.18-alpine
-# FROM nginx:1.23.2-alpine
-# WORKDIR /usr/src/app
-# CMD ["npm", "start"]
 
 # build
 FROM node:16.18-alpine as build
