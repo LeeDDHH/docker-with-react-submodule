@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  front-app:
+    platform: linux/x86_64
+    container_name: front-app
+    build:
+      context: .
+      dockerfile: ./dev/Dockerfile
+    volumes:
+      - ./frontVolume:/src
+    ports:
+      - "4000:4000"
+    tty: true
+    working_dir: /src
+    command: sh -c "npm rebuild esbuild && npm run dev"
