@@ -3,11 +3,13 @@ services:
   front-app:
     platform: linux/x86_64
     container_name: front-app
+    image: localdev/docker-react-app
     build:
       context: .
       dockerfile: ./dev/Dockerfile
     volumes:
       - ./frontVolume:/src
+      - /src/node_modules # パス指定のみで、Engineにボリュームを生成させる
     ports:
       - "4000:4000"
     tty: true
