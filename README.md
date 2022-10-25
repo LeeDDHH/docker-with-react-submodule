@@ -6,7 +6,8 @@
 
 - react プロジェクトはサブモジュールとして指定
   - [LeeDDHH/react-typescript-webpack](https://github.com/LeeDDHH/react-typescript-webpack/)
-  - react プロジェクトで `npm install` した結果をまるごとコピーして docker コンテナ内で扱う
+- 本番用・開発用ともに、Docker イメージ作成中に `npm install` をして、 `node_modules` を生成する
+- 開発用のみ、PC 側の `frontVolume` のソースを使いながら、コンテナ内に `node_modules` をバインドする
 - 本番用と開発用で `docker-compose.yml` のファイルを分ける
   |用途|ファイル|備考|
   |:---:|:---:|:---:|
@@ -17,14 +18,28 @@
 
 ### 開発
 
-```docker
+```shell
+# コマンド
 docker compsoe -f docker-compose.dev.yml up -d
+
+# 起動・終了スクリプト
+sh bin/dev.sh
+
+# イメージの削除も含めた起動・終了スクリプト
+sh bin/dev_rebuild.sh
 ```
 
 ### 本番
 
-```docker
+```shell
+# コマンド
 docker compsoe up -d
+
+# 起動・終了スクリプト
+sh bin/prod.sh
+
+# イメージの削除も含めた起動・終了スクリプト
+sh bin/prod_rebuild.sh
 ```
 
 ### 注意点
